@@ -1,21 +1,17 @@
 % Exercice 1
+tab = [];
+tab2 = [];
+tab3 = [];
+
 for i = [3:14]
-    tab = lagrangeEqui(i);
+    tab = [tab lagrangeEqui(i)];
+    tab2 = [tab2 barycentriqueEqui(i)];
+    tab3 = [tab3 borneEqui(i)];
 end
 
-lagr(sin,linspace(-1,1,4),linspace(-1, 1, 100))
-
-% Point équidistant
-function resultat = lagrangeEqui(n)
-    x = linspace(-1,1,n); % déf points équidistants
-    data = [1:length(x)];
-    z = linspace(-1, 1, 100);
-
-    for i = [1:length(data)]
-        data(i) = sin(x(i));
-    end
-
-    polyInter = polyval(lagrangepoly(x,data),z);
-    Funct = sin(z);
-    resultat = max(abs(polyInter - Funct));
-end
+semilogy([3:14],tab,'or')
+hold on
+semilogy([3:14],tab2,'*b')
+hold on
+semilogy([3:14],tab3,'-k')
+hold off

@@ -1,0 +1,6 @@
+function resultat = borneEqui(n)
+    sysms x
+    
+    z = linspace(-1, 1, 100);
+    diff(sin
+end
