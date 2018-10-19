@@ -1,23 +1,38 @@
 % Exercice 1
+tab = [];
+tab2 = [];
+tab3 = [];
+tab4 = [];
+tab5 = [];
+tab6 = [];
+
 for i = [3:14]
-    tab = lagrangeEqui(i);
+    tab = [tab lagrangeEqui(i)];
+    tab2 = [tab2 barycentriqueEqui(i)];
+    tab3 = [tab3 borneEqui(i)];
+    tab4 = [tab4 lagrangeTcheb(i)];
+    tab5 = [tab5 barycentriqueTcheb(i)];
+    tab6 = [tab6 borneTcheb(i)];
+    [tab7;tab8;tab9] = toutEnsemble(i);
 end
 
-data = sin(linspace(-1,1,4))
-x = linspace(-1,1,4
- lagr(data,linspace(-1,1,4),linspace(-1, 1, 100))
+subplot(2,2,1);
+semilogy([3:14],tab,'or')
+hold on
+semilogy([3:14],tab2,'*b')
+semilogy([3:14],tab3,'-k')
+hold off
 
-% Point équidistant
-function resultat = lagrangeEqui(n)
-    x = linspace(-1,1,n); % déf points équidistants
-    data = [1:length(x)];
-    z = linspace(-1, 1, 100);
+subplot(2,2,2);
+semilogy([3:14],tab4,'or')
+hold on
+semilogy([3:14],tab5,'*b')
+semilogy([3:14],tab6,'-k')
+hold off
 
-    for i = [1:length(data)]
-        data(i) = sin(x(i));
-    end
-
-    polyInter = polyval(lagrangepoly(x,data),z);
-    Funct = sin(z);
-    resultat = max(abs(polyInter - Funct));
-end
+subplot(2,2,4);
+semilogy([3:14],tab7,'or')
+hold on
+semilogy([3:14],tab8,'*b')
+semilogy([3:14],tab8,'-k')
+hold off
