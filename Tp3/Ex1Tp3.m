@@ -1,0 +1,21 @@
+% Exercice 1
+for i = [3:14]
+    tab = lagrangeEqui(i);
+end
+
+lagr(sin,linspace(-1,1,4),linspace(-1, 1, 100))
+
+% Point équidistant
+function resultat = lagrangeEqui(n)
+    x = linspace(-1,1,n); % déf points équidistants
+    data = [1:length(x)];
+    z = linspace(-1, 1, 100);
+
+    for i = [1:length(data)]
+        data(i) = sin(x(i));
+    end
+
+    polyInter = polyval(lagrangepoly(x,data),z);
+    Funct = sin(z);
+    resultat = max(abs(polyInter - Funct));
+end
